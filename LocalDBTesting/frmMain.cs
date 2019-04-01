@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using HubSwitcher.UI;
 
 namespace LocalDBTesting {
     public partial class frmMain : Form {
@@ -83,6 +84,11 @@ namespace LocalDBTesting {
             } else {
                 MessageBox.Show("Please Select Record to Delete");
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e) {
+            formMain frmLogin = new formMain();
+            frmLogin.ShowDialog();
         }
     }
 }
