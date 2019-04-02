@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using HubSwitcher.UI;
 
 namespace LocalDBTesting {
     public partial class frmMain : Form {
@@ -87,8 +86,7 @@ namespace LocalDBTesting {
         }
 
         private void Button1_Click(object sender, EventArgs e) {
-            formMain frmLogin = new formMain();
-            frmLogin.ShowDialog();
+
         }
     }
 }

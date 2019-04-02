@@ -88,5 +88,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocalDBTesting\LocalDBTesting.csproj">
+      <Project>{2ca58ef3-b6c9-44bf-86c7-911b96b8d566}</Project>
+      <Name>LocalDBTesting</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

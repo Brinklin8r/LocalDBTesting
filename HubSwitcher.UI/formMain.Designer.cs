@@ -126,6 +126,7 @@
             this.btnLaunch.TabIndex = 9;
             this.btnLaunch.Text = "Launch";
             this.btnLaunch.UseVisualStyleBackColor = true;
+            this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
             // btnConfig
             // 
@@ -135,7 +136,7 @@
             this.btnConfig.TabIndex = 10;
             this.btnConfig.Text = "Config";
             this.btnConfig.UseVisualStyleBackColor = true;
-            this.btnConfig.Click += new System.EventHandler(this.BtnConfig_Click);
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // formMain
             // 

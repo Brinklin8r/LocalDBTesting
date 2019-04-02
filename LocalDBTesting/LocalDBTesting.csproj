@@ -115,11 +115,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HubSwitcher.UI\HubSwitcher.UI.csproj">
-      <Project>{439aad26-fca4-4861-a77b-aaeec3811cb8}</Project>
-      <Name>HubSwitcher.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
