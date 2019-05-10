@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using LocalDBTesting;
+using HubSwitcher.Persistance;
 
 namespace HubSwitcher.UI {
     public partial class formMain : Form {

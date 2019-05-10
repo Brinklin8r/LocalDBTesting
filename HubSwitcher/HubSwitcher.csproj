@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{439AAD26-FCA4-4861-A77B-AAEEC3811CB8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>HubSwitcher.UI</RootNamespace>
-    <AssemblyName>HubSwitcher.UI</AssemblyName>
+    <ProjectGuid>{A222C90E-3723-4945-B94F-4B60C06FADB4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HubSwitcher</RootNamespace>
+    <AssemblyName>HubSwitcher</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,64 +53,29 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="formDBUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formDBUpdate.Designer.cs">
-      <DependentUpon>formDBUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="formMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formMain.Designer.cs">
-      <DependentUpon>formMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="formDBUpdate.resx">
-      <DependentUpon>formDBUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formMain.resx">
-      <DependentUpon>formMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HubSwitcher.Persistance\HubSwitcher.Persistance.csproj">
       <Project>{e6f11350-2b63-4684-9755-df466b6c300b}</Project>
       <Name>HubSwitcher.Persistance</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LocalDBTesting\LocalDBTesting.csproj">
-      <Project>{2ca58ef3-b6c9-44bf-86c7-911b96b8d566}</Project>
-      <Name>LocalDBTesting</Name>
+    <ProjectReference Include="..\HubSwitcher.UI\HubSwitcher.UI.csproj">
+      <Project>{439aad26-fca4-4861-a77b-aaeec3811cb8}</Project>
+      <Name>HubSwitcher.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +89,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
