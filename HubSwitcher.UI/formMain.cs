@@ -7,7 +7,14 @@ namespace HubSwitcher.UI {
     public partial class formMain : Form {
         public formMain() {
             InitializeComponent();
+
+            FileSystem FileInfo = new FileSystem();
+
+            ConfigSettings ConfigInfo = new ConfigSettings();
+            var bob = ConfigInfo.GetSettings();
+
             tbSystem.Text = "Some Text Here";
+
         }
 
         private void btnConfig_Click(object sender, EventArgs e) {

@@ -7,28 +7,15 @@ using System.Configuration;
 using Security;
 
 namespace HubSwitcher.Persistance {
-    class FileSystem {
+    public class FileSystem {
 
-        private readonly string _configPath = @"C:\Program Files (x86)\Bluepoint Solutions\RDC\IP Admin";
-        private readonly string _configFile = @"IP Admin.exe.config";
+        private readonly static string _configPath = @"C:\Program Files (x86)\Bluepoint Solutions\RDC\IP Admin";
+        private readonly static string _configFile = @"IP Admin.exe.config";
         private string _systemName;
         private string _URI;
         private string _UIN;
-        private string _exePath;
-        private Configuration _config;
-
-        public string ExePath {
-            get => _exePath;
-            set => _exePath = System.IO.Path.Combine(_configPath, _configFile);
-        }
-
-        public Configuration Config {
-            get => _config;
-            set => _config = ConfigurationManager.OpenExeConfiguration(ExePath);
-        }
-        public string UIN { get => _UIN; set => _UIN = value; }
-        public string URI { get => _URI; set => _URI = value; }
-        public string SystemName { get => _systemName; set => _systemName = value; }
+        private static string _exePath = System.IO.Path.Combine(_configPath, _configFile);
+        Configuration _config = ConfigurationManager.OpenExeConfiguration(_exePath);
 
     }
 
