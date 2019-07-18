@@ -2,9 +2,12 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DataManipulation;
 
 namespace LocalDBTesting {
     public partial class frmMain : Form {
+        DBMaint dbm = new DBMaint();
+
         SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SampleDatabase.mdf;Integrated Security = True;");
 
         SqlCommand cmd;
@@ -33,12 +36,7 @@ namespace LocalDBTesting {
         }
         //Display Data in DataGridView  
         private void DisplayData() {
-            con.Open();
-            DataTable dt = new DataTable();
-            adapt = new SqlDataAdapter("select * from tbl_Record", con);
-            adapt.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
+            dataGridView1.DataSource = dbm.ReadFromDB();
         }
         //Clear Data  
         private void ClearData() {

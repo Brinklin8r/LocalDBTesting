@@ -115,5 +115,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataManipulation\DataManipulation.csproj">
+      <Project>{49c5e731-202c-4160-a260-5967b05cdf63}</Project>
+      <Name>DataManipulation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
