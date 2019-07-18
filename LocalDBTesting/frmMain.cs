@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using DataManipulation;
 
 namespace LocalDBTesting {
     public partial class frmMain : Form {
-        SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SampleDatabase.mdf;Integrated Security = True;");
+        DBMaint dbm = new DBMaint();
 
-        SqlCommand cmd;
-        SqlDataAdapter adapt;
         //ID variable used in Updating and Deleting Record  
         int ID = 0;
+
         public frmMain() {
             InitializeComponent();
             DisplayData();
@@ -18,13 +16,7 @@ namespace LocalDBTesting {
         //Insert Data  
         private void btn_Insert_Click(object sender, EventArgs e) {
             if (txt_Name.Text != "" && txt_State.Text != "") {
-                cmd = new SqlCommand("insert into tbl_Record(Name,State) values(@name,@state)", con);
-                con.Open();
-                cmd.Parameters.AddWithValue("@name", txt_Name.Text);
-                cmd.Parameters.AddWithValue("@state", txt_State.Text);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Record Inserted Successfully");
+                dbm.InsertIntoDB(txt_Name.Text, txt_State.Text);
                 DisplayData();
                 ClearData();
             } else {
@@ -33,12 +25,7 @@ namespace LocalDBTesting {
         }
         //Display Data in DataGridView  
         private void DisplayData() {
-            con.Open();
-            DataTable dt = new DataTable();
-            adapt = new SqlDataAdapter("select * from tbl_Record", con);
-            adapt.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
+            dataGridView1.DataSource = dbm.ReadFromDB();
         }
         //Clear Data  
         private void ClearData() {
@@ -55,14 +42,7 @@ namespace LocalDBTesting {
         //Update Record  
         private void btn_Update_Click(object sender, EventArgs e) {
             if (txt_Name.Text != "" && txt_State.Text != "") {
-                cmd = new SqlCommand("update tbl_Record set Name=@name,State=@state where ID=@id", con);
-                con.Open();
-                cmd.Parameters.AddWithValue("@id", ID);
-                cmd.Parameters.AddWithValue("@name", txt_Name.Text);
-                cmd.Parameters.AddWithValue("@state", txt_State.Text);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Updated Successfully");
-                con.Close();
+                dbm.UpdateDB(ID, txt_Name.Text, txt_State.Text);
                 DisplayData();
                 ClearData();
             } else {
@@ -72,12 +52,7 @@ namespace LocalDBTesting {
         //Delete Record  
         private void btn_Delete_Click(object sender, EventArgs e) {
             if (ID != 0) {
-                cmd = new SqlCommand("delete tbl_Record where ID=@id", con);
-                con.Open();
-                cmd.Parameters.AddWithValue("@id", ID);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Record Deleted Successfully!");
+                dbm.DeleteFromDB(ID);
                 DisplayData();
                 ClearData();
             } else {
