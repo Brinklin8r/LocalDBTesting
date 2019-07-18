@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace DataManipulation {
     public class DBMaint {
 
-        private SqlConnection _con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SampleDatabase.mdf;Integrated Security = True;");
+        private readonly SqlConnection _con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SampleDatabase.mdf;Integrated Security = True;");
         private SqlCommand _cmd;
         private SqlDataAdapter _adapt;
 
         // Create
         public void InsertIntoDB(string Name, string State) {
-            _cmd = new SqlCommand("insert into tbl_Record(Name,State) values(@name,@state)", _con);
+            string _command = "insert into tbl_Record(Name,State) values(@name,@state)";
+
+            _cmd = new SqlCommand(_command, _con);
             _con.Open();
             _cmd.Parameters.AddWithValue("@name", Name);
             _cmd.Parameters.AddWithValue("@state", State);
@@ -26,8 +24,10 @@ namespace DataManipulation {
         // Read
         public DataTable ReadFromDB() {
             DataTable dt = new DataTable();
+            string _command = "select * from tbl_Record";
+
             _con.Open();
-            _adapt = new SqlDataAdapter("select * from tbl_Record", _con);
+            _adapt = new SqlDataAdapter(_command, _con);
             _adapt.Fill(dt);
             _con.Close();
 
@@ -36,7 +36,9 @@ namespace DataManipulation {
 
         // Update
         public void UpdateDB(int ID, string Name, string State) {
-            _cmd = new SqlCommand("update tbl_Record set Name=@name,State=@state where ID=@id", _con);
+            string _command = "update tbl_Record set Name=@name,State=@state where ID=@id";
+
+            _cmd = new SqlCommand(_command, _con);
             _con.Open();
             _cmd.Parameters.AddWithValue("@id", ID);
             _cmd.Parameters.AddWithValue("@name", Name);
@@ -47,7 +49,9 @@ namespace DataManipulation {
 
         // Delete
         public void DeleteFromDB(int ID) {
-            _cmd = new SqlCommand("delete tbl_Record where ID=@id", _con);
+            string _command = "delete tbl_Record where ID=@id";
+
+            _cmd = new SqlCommand(_command, _con);
             _con.Open();
             _cmd.Parameters.AddWithValue("@id", ID);
             _cmd.ExecuteNonQuery();
